@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<!--准备好一个容器-->
+<div id="test"></div>
+<script type="text/javascript" src="../js/react.development.js"></script>
+<script type="text/javascript" src="../js/react-dom.development.js"></script>
+<script type="text/javascript" src="../js/babel.min.js"></script>
+<script type = "text/babel">
+    // class Person {
+    //     constructor(name, age) {
+    //         this.name = name;
+    //         this.age = age;
+    //     }
+    //     speak(){
+    //         console.log(`我叫${this.name},我的年龄是${this.age}`)
+    //     }
+    // }
+    //
+    // class Student extends Person{
+    //     constructor(name, age, grade) {
+    //         super(name, age);
+    //         this.grade = grade;
+    //     }
+    //     speak() {
+    //         console.log(`我的年级是${this.grade}`)
+    //     }
+    //     study(){
+    //         console.log("我学习很努力！")
+    //
+    //     }
+    // }
+    // const s1 = new Student('pipi', 23, "研二");
+    // s1.speak();
+    // s1.study();
+    // console.log(s1);
+
+    class MyComponent extends React.Component{
+        // render是放在哪里的？ render是放在MyComponent的原型对象上面，供实例使用的。
+        // render中的this是谁？ MyComponent的实例对象
+        render(){
+            console.log(this)
+            return <h2>我是类组件</h2>
+        }
+
+    }
+    ReactDOM.render(<MyComponent/>, document.getElementById("test"));
+    /*
+    * 执行ReactDOM.render(<MyComponent/>, document.getElementById("test"))后发生了什么
+    * 1. React解析组件标签，找到了MyComponent组件
+    * 2. 发现组件是使用类定义的，随后new出来该类的实例，并通过该实例调用到原型上的render方法
+    * 3.将render返回的虚拟DOM转换为真实DOM，随后呈现在页面中。
+    * */
+
+
+</script>
+
+</body>
+</html>
