@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<!--准备好一个容器-->
+<div id="test"></div>
+
+<script type="text/javascript" src="../js/react.development.js"></script>
+<script type="text/javascript" src="../js/react-dom.development.js"></script>
+<script type="text/javascript" src="../js/babel.min.js"></script>
+<script type="text/javascript" src="../js/prop-types.js"></script>
+
+<script type="text/babel">
+    class Demo extends React.Component {
+        constructor(props) {
+            super(props);
+        }
+
+        state = {}
+
+        render() {
+            return (
+                <div>
+                    用户名：
+                    <input type="text" placeholder="请输入用户名"/>&nbsp;
+                    密码：
+                    <input type="" placeholder="请输入密码"/>&nbsp;
+                    <button>登录</button>
+                </div>
+            )
+        }
+    }
+
+
+    ReactDOM.render(<Demo/>, document.getElementById("test"));
+</script>
+
+</body>
+</html>
