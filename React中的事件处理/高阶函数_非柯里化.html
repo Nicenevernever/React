@@ -28,30 +28,27 @@
             const {username, password} = this.state;
             alert(`用户名： ${username} 密码：${password}`);
         }
-
-        saveFormData = (dataType) => {
-            console.log(dataType);
-            return (event) => {
-                this.setState({
-                    [dataType]: event.target.value,
-                })
-                console.log(dataType, event.target.value);
-            }
+        saveFormData = (dataType, value) => {
+            this.setState({
+                [dataType]: value,
+            })
         }
         render() {
             return (
                 <form action="http://www.atguigu.com" onSubmit={this.handleSubmit}>
-                    用户名：<input onChange={this.saveFormData('username')} type="text" name="username"/>&nbsp;
+                    用户名：<input onChange={(event) => {
+                    this.saveFormData('username', event.target.value)
+                }} type="text" name="username"/>&nbsp;
                     {/*必须把一个函数作为onChange的回调，如果不return则实际是将saveFormData函数调用的结果作为返回值给
                     onChange了*/}
-                    密码：<input onChange={this.saveFormData('password')} type="password" name="password"/>&nbsp;
+                    密码：<input onChange={(event) => {
+                    this.saveFormData('password', event.target.value)
+                }} type="password" name="password"/>&nbsp;
                     <button>登录</button>
                 </form>
             )
         }
     }
-
-
     ReactDOM.render(<Login/>, document.getElementById("test"));
 </script>
 

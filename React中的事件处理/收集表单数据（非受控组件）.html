@@ -15,28 +15,33 @@
 <script type="text/javascript" src="../js/prop-types.js"></script>
 
 <script type="text/babel">
-    class Demo extends React.Component {
+    class Login extends React.Component {
         constructor(props) {
             super(props);
         }
 
         state = {}
 
+        handleSubmit = (event) => {
+            event.preventDefault(); // 阻止表单提交
+            console.log(event);
+            const {uname, pwd} = this;
+            alert(`用户名： ${uname.value} 密码：${pwd.value}`);
+        }
+
         render() {
             return (
-                <div>
-                    用户名：
-                    <input type="text" placeholder="请输入用户名"/>&nbsp;
-                    密码：
-                    <input type="" placeholder="请输入密码"/>&nbsp;
+                <form action="http://www.atguigu.com" onSubmit={this.handleSubmit}>
+                    用户名：<input ref={(c) => this.uname = c} type="text" name="username"/>&nbsp;
+                    密码：<input ref={(c) => this.pwd = c} type="password" name="password"/>&nbsp;
                     <button>登录</button>
-                </div>
+                </form>
             )
         }
     }
 
 
-    ReactDOM.render(<Demo/>, document.getElementById("test"));
+    ReactDOM.render(<Login/>, document.getElementById("test"));
 </script>
 
 </body>
